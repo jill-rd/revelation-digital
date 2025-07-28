@@ -19,7 +19,7 @@ class Header extends Component {
     });
   }
 
-  render() {
+  render() { 
     let str_url = "";
     const isBrowser = () => typeof window !== "undefined";
     if (isBrowser()) {
