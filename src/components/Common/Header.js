@@ -59,15 +59,10 @@ class Header extends Component {
                 <>
                   {this.state.pagedata.map((prop, i) => {
                     // Detect external links
-                    const isExternal =
-                      /^(https?:)?\/\//.test(prop.Slug) ||
-                      /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(prop.Slug);
-
-                    // Build proper slug
+                    const isExternal = /^(https?:)?\/\//.test(prop.Slug) || /^[\w.-]+\.[a-z]{2,}$/i.test(prop.Slug);
+                    
                     const slugPath = isExternal
-                      ? (prop.Slug.startsWith("http")
-                          ? prop.Slug
-                          : `https://${prop.Slug}`)
+                      ? (prop.Slug.startsWith("http") ? prop.Slug : `https://${prop.Slug}`)
                       : `/${prop.Slug.replace(/^\/+/, '')}`;
 
                     // Check if it's the current page
